@@ -46,11 +46,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     GamesComponent,
     SettingsComponent,
     PageNotFoundComponent,
-<<<<<<< HEAD
-    ChatIDComponent
-=======
+    ChatIDComponent,
     AddClassComponent
->>>>>>> fc9ee8c291608b533bd220d0b0c1becefcf5ce42
   ],
   imports: [
     BrowserModule,

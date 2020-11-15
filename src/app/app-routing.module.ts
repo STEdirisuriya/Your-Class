@@ -33,14 +33,9 @@ const routes: Routes = [
       { path: 'tests', component: TestsComponent },
       { path: 'games', component: GamesComponent },
       { path: 'settings', component: SettingsComponent },
-<<<<<<< HEAD
-      // { path: '', redirectTo: '/profile', pathMatch: 'full'},
-      // { path: '**', component: PageNotFoundComponent },
-=======
       {path: 'classes/addClass', component: AddClassComponent},
       { path: '', redirectTo: '/profile', pathMatch: 'full'},
       { path: '**', component: PageNotFoundComponent },
->>>>>>> fc9ee8c291608b533bd220d0b0c1becefcf5ce42
 ];
 
 @NgModule({

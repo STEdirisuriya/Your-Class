@@ -9,7 +9,13 @@
 }
 
 
-.container-fluid, .row, .row div{
+.container-fluid{
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+}
+
+.row, .row div{
     margin: 0;
     padding: 0;
     height: 100%;
@@ -18,11 +24,11 @@
 .fieldbar{
     z-index: 8;
     background-color: #e6e6e6;
+    height: 100% !important;
 }
 
-
 .main-space{
-    height: 90vh !important;
+    height: 100% !important;
 }
 // .fieldbar:hover + .sidebar{
 //     display: block;

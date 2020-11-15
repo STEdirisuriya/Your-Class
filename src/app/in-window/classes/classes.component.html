@@ -1,13 +1,18 @@
-<ul class="nav justify-content-end">
-  <li class="nav-item">
-    <button type="button" class="btn btn-success" routerLink="addClass">Add Class</button>
-  </li>
-  
-</ul>
+<div class="class">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <button type="button" class="btn btn-success" routerLink="addClass">
+        <span class="material-icons" routerLink="/library">
+          add_box
+        </span>
+        <span class="button-name">Add Class</span>
+      </button>
+    </li>
+  </ul>
 
- 
-<div class="class-card">
-  <div class="card mb-3 bg-light border-info"  *ngFor="let item of classes | async">
+  <div class="class-card">
+    <div class="card mb-3 bg-light border-info" *ngFor="let item of classes | async">
       <h5 class="card-header">{{item.title | uppercase}}</h5>
       <div class="card-body">
         <h5 class="card-title">Grade :- {{item.grade}}</h5>
@@ -17,8 +22,8 @@
           <p class="card-subtitle mb-2 text-muted">by {{item.firstName}} {{item.lastName}}</p>
           <p class="card-subtitle mb-2 text-muted">email :- {{item.email}}</p>
           <p class="card-subtitle mb-2 text-muted">contact No :- {{item.contactNo}}</p>
-
         </div>
       </div>
     </div>
-   </div> 
+  </div>
+</div>
