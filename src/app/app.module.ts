@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,7 @@ import { SettingsComponent } from './in-window/settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ChatIDComponent } from './in-window/chat-window/chat-id/chat-id.component';
 import { AddClassComponent } from './in-window/classes/add-class/add-class.component';
+import { ScheduleMeetingComponent } from './in-window/classes/start/schedule-meeting/schedule-meeting.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -47,10 +49,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SettingsComponent,
     PageNotFoundComponent,
     ChatIDComponent,
-    AddClassComponent
+    AddClassComponent,
+    ScheduleMeetingComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     AppRoutingModule,

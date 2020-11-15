@@ -14,8 +14,7 @@ export class ClassesComponent implements OnInit {
   
   constructor(firestore: AngularFirestore) { 
     this.classes = firestore.collection('classes').valueChanges();
-
- 
+     
   }
 
   

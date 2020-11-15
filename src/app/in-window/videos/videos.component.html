@@ -1,3 +1,32 @@
 
+<div  class="join-class" [@JoinClass]="join ? 'Joined' : 'notJoined'"  id="join class">
+  <div >
+    <form >
+      <h4>Join Class</h4>
+        <div class="form-row">
+          <div class="form-group col-md-4 ">
+            <label for="inputRoomName">ClassId</label>
+            <input type="text" class="form-control" id="inputRoomName" placeholder="Id" [(ngModel)] = "joinClass.ClassId" name="ClassId">
+          </div>
+          <div class="form-group col-md-4 form-input-material">
+            <label for="inputDisplayName">Display Name</label>
+            <input type="text" class="form-control" id="inputDisplayName" placeholder="Name" [(ngModel)] = "joinClass.DisplayName" name="DispalyName">
+          </div>
+        </div>
+        <div class="form-group col-md-8 ">
+            <label for="exampleFormControlInput1">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)] = "joinClass.email" name="email">
+          </div>
+          
+         
+        <button type="submit" class="btn btn-success mb-2"  (click) = "join_class()">Join</button>
+      </form>
+    </div>
+  </div>
 
-<div class="jitsi-styling" id="meet"></div>
+  
+
+<div [@JoinClass]="join ? 'notJoined' : 'Joined'" id="meet">
+
+
+</div>

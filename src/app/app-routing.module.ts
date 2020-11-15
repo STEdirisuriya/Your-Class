@@ -14,6 +14,7 @@ import { SettingsComponent } from './in-window/settings/settings.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ChatIDComponent } from './in-window/chat-window/chat-id/chat-id.component';
 import { AddClassComponent } from './in-window/classes/add-class/add-class.component';
+import { ScheduleMeetingComponent } from './in-window/classes/start/schedule-meeting/schedule-meeting.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: 'games', component: GamesComponent },
       { path: 'settings', component: SettingsComponent },
       {path: 'classes/addClass', component: AddClassComponent},
+      {path: 'classes/start|schedule', component: ScheduleMeetingComponent},
       { path: '', redirectTo: '/profile', pathMatch: 'full'},
       { path: '**', component: PageNotFoundComponent },
 ];
