@@ -6,6 +6,13 @@
           "rivi-k"
         ]
       }
+    },
+    "your-class-2020": {
+      "hosting": {
+        "YourClass": [
+          "your-class-2020"
+        ]
+      }
     }
   }
 }

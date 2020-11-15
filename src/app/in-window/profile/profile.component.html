@@ -10,7 +10,7 @@
       <button class="btn btn-primary" (click)="changeCategory(user, 'Student')">Student</button>
       <button class="btn btn-success" (click)="changeCategory(user, 'Teacher')">Teacher</button>
     </div>
-    {{ (user | async)?.name }}
+    {{ (userdetails | async)?.name }}
   </div>
   <ng-template #showLogin>
     <p>Please login.</p>

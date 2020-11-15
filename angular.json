@@ -129,12 +129,8 @@
           }
         },
         "deploy": {
-          "builder": "@netlify-builder/deploy:deploy",
-          "options": {
-            "outputPath": "dist/YourClass",
-            "netlifyToken": "EwsdtMeia7q6v2duKxFdZ57Y1GspL1jLammY9A7HvLM",
-            "siteId": ""
-          }
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -1,5 +1,159 @@
-<div class="chat-box">
-    <div class="messages-box">
-
+<div class="rk-name-box">
+    <img class="rk-friend-img" [src]="(friend | async)?.img" alt="img" >
+    <div class="rk-nameplate">
+    <h3 class="rk-friend-name">{{ (friend | async)?.name }}</h3>
+    <span class="rk-status">Last online at 10.20 am</span>
+  </div>
+  <div class="rk-name-options">
+    <i class="material-icons menu">search</i>
+  <i class="material-icons menu">attach_file</i>
+  <i class="material-icons menu">more_vert</i>
+  </div>
+  </div>
+  <div class="rk-chatsend">
+  <div class="rk-chat-area" id="chat-area">
+    <div class="rk-chat-box">
+      <div class="rk-chat">
+        <button (click)="scrolladjust()" id="myBtn" title="Go to top"><span class="material-icons scrolldown">expand_more</span></button>
+        <!-- <div class="chatout">
+          <span class="message"> Hello!</span>
+          <span class="timestampout">09.00 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> Hello</span>
+          <span class="timestampin">09.02 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> How are you?</span>
+          <span class="timestampout">09.03 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> I'm fine!</span>
+          <span class="timestampin">09.05 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampout">09.10 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampin">09.10 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampout">09.10 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampin">09.10 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampout">09.10 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampin">09.10 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampout">09.10 am</span>
+        </div>
+        <div class="chatin">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampin">09.10 am</span>
+        </div>
+        <div class="chatout">
+          <span class="message"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit</span>
+          <span class="timestampout">09.10 am</span>
+        </div> -->
+  
+        <!-- <div class="incoming">
+          <div class="pen">
+            <i class="material-icons">
+              create
+            </i>
+          </div>
+          <div class="line">
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
+          </div>
+        </div> -->
+        
+        <div *ngFor="let messageitem of messageitems | async" class="chats"> 
+            <div *ngIf="messageitem.sentBy; else elseBlock" class="chatout">
+              <span class="material-icons chat-star" *ngIf="messageitem.star">star</span>
+              <img *ngIf='messageitem.image' [src]="messageitem.image" class="chat-img" alt="">
+              <span *ngIf='messageitem.message' class="message">{{ messageitem.message }}</span>
+              <span class="timestampout"><i class="material-icons timestamp">access_time</i>{{ messageitem.sent.toMillis() | date:'h:mm a' }}</span>
+            </div>
+            <ng-template #elseBlock>
+              <div class="chatin">
+                <span class="material-icons chat-star" *ngIf="messageitem.star">star</span>
+                <img *ngIf='messageitem.image' [src]="messageitem.image" class="chat-img" alt="">
+              <span *ngIf='messageitem.message' class="message">{{ messageitem.message }}</span>
+                <span class="timestampout"><i class="material-icons timestamp">access_time</i>{{ messageitem.sent.toMillis() | date:'h:mm a' }}</span>
+              </div>
+            </ng-template>
+          </div>
+        
+        <div class="chatout" *ngIf="chat && !imgSrc">
+          <span class="message">{{ chat }}</span>
+          <span class="timestampout">typing...</span>
+        </div>
+  <!-- 
+        <div class="chat-star-chatout">
+          <span class="message"> <span class="material-icons chat-star">star</span></span>
+          <span class="timestampout timestampout-star">You typing...</span>
+        </div> -->
+  
+        <div class="chatout" *ngIf="imgSrc && imageURL.valid">
+        <span class="material-icons remove-img" (click)="imgclear()">remove_circle</span>
+          <img [src]="imgSrc" class="chat-img" alt="">
+          <span class="message">{{ chat }}</span>
+          <span class="timestampout">Click on send to confirm...</span>
+        </div>
+      </div>
+  
     </div>
-</div>
+  </div>
+  
+  <div class="sendarea">
+    <div class="emoji">
+      <span class="material-icons emojipick">emoji_emotions</span>
+    </div>
+    <div class="emoji" (click)="sendStar()">
+      <span class="material-icons star">star</span>
+    </div>
+    <div class="emoji" (click)="fileUploader.click()">
+      <span class="material-icons imgup">image</span>
+    </div>
+    <input type="file" accept="image/png,image/jpg,image/jpeg,image/gif" class="upload-image" name="image" autocomplete="off" #fileUploader fromControlName="imageURL" (change)="showImg($event)" />
+    
+    <input [(ngModel)]="chat" id="chatinput" (keyup.enter)="sendMessage()" placeholder="Type a message....">
+    <!-- (change)="messageChanged()" -->
+    <div class="emoji">
+      <span class="material-icons send" (click)="sendMessage()">send</span>
+    </div>
+  </div>
+  </div>
+  
