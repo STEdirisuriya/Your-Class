@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { auth } from 'firebase/app';
 import { Observable } from 'rxjs';
 
-export interface User { name: string; id: string; category:string; }
+export interface User { name: string; id: string; category:string; joined: string; img: string }
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +14,18 @@ export interface User { name: string; id: string; category:string; }
 export class ProfileComponent implements OnInit {
   private usersCollection: AngularFirestoreCollection<User>;
   users: Observable<User[]>;
+  private currentUserDocument: AngularFirestoreDocument<User>;
+  userdetails: Observable<User>;
 
   constructor(public auth: AngularFireAuth, private afs: AngularFirestore) {
     this.usersCollection = afs.collection<User>('users');
     this.users = this.usersCollection.valueChanges();
+    
+  }
+
+  updateUser(user){
+    this.currentUserDocument = this.afs.doc<User>(`users/${user.uid}`);
+    this.userdetails = this.currentUserDocument.valueChanges();
   }
 
   addUser(user) {
@@ -41,6 +49,8 @@ export class ProfileComponent implements OnInit {
       }
       usersDb.set(newUser);
     });
+
+    return this.updateUser(user);
   }
 
   changeCategory(user, category){

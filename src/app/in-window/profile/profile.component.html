@@ -8,8 +8,9 @@
     <h5 class="change-account-text">Change Account Type</h5>
     <div class="change-account">
       <button class="btn btn-primary" (click)="changeCategory(user, 'Student')">Student</button>
-      <button class="btn btn-primary" (click)="changeCategory(user, 'Teacher')">Teacher</button>
+      <button class="btn btn-success" (click)="changeCategory(user, 'Teacher')">Teacher</button>
     </div>
+    {{ (user | async)?.name }}
   </div>
   <ng-template #showLogin>
     <p>Please login.</p>
